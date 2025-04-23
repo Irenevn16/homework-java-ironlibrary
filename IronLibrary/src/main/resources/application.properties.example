@@ -1,5 +1,4 @@
 spring.application.name=IronLibrary
-spring.application.name=demo
 spring.datasource.url=jdbc:mysql://localhost:3306/homework-java-ironlibrary
 spring.datasource.username=MYUSER
 spring.datasource.password=MYPASSWORD
