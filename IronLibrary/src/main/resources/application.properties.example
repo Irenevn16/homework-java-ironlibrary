@@ -1,0 +1,7 @@
+spring.application.name=IronLibrary
+spring.datasource.url=jdbc:mysql://localhost:3306/homework-java-ironlibrary
+spring.datasource.username=MYUSER
+spring.datasource.password=MYPASSWORD
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+spring.jpa.hibernate.ddl-auto=validate
