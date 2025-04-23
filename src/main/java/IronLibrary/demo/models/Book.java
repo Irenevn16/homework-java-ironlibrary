@@ -5,12 +5,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "books")
+@Table(name = "Book")
 public class Book {
     @Id
     private String isbn;
+
     private String title;
+
     private String category;
+
     private int quantity;
 
     public Book() {
