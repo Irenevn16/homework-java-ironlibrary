@@ -31,7 +31,11 @@ public interface BookRepositoryIrene extends JpaRepository<Book, String> {
             @Param("authorBook") Book authorBook //mirar esto
     );
     //search book by author
-    public Book findByAuthor(Author author);
+    Book findByAuthor(Author author);
 
+    @Modifying
+    @Transactional
+    @Query(value = "INSERT INTO Student (usn, name) VALUES (:usn, :name)", nativeQuery = true)
+    void insertStudent(@Param("usn") String usn, @Param("name") String name);
 
 }
