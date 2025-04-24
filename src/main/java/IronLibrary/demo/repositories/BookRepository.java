@@ -11,19 +11,25 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface BookRepositoryIrene extends JpaRepository<Book, String> {
-
-    @Modifying //oblig al hacer INSERT
-    @Transactional //pq es dinamico
+public interface BookRepository extends JpaRepository<Book, String> {
+    
+    //Add book
+    @Modifying
+    @Transactional
     @Query(value=  "INSERT INTO Book (isbn, title, category, quantity) VALUES (:isbn, :title, :category, :quantity)", nativeQuery = true)
-    //nativeQuery = true indica que es SQL nativo, no JPQL
+
     void addBook(
             @Param("isbn") String isbn,
             @Param("title") String title,
             @Param("category") String category,
             @Param("quantity") int quantity
-    ); //como uno esto al add author?
+    );
 
+    // Search book by title: This action is responsible for searching a book by title.
+    Book findBookByTitle(String title);
+
+    //Search book by category: This action is responsible for searching a book by category.
+    Book findBookByCategory(String category);
 
     //Issue book to student
     @Modifying
@@ -31,18 +37,11 @@ public interface BookRepositoryIrene extends JpaRepository<Book, String> {
     @Query(value = "INSERT INTO Student (usn, name) VALUES (:usn, :name)", nativeQuery = true)
     void insertStudent(@Param("usn") String usn, @Param("name") String name);
 
-    //    Search book by title: This action is responsible for searching a book by title.
-    Book findBookByTitle(String title);
-
-    //    Search book by category: This action is responsible for searching a book by category.
-    Book findBookByCategory(String category);
-
     // List books by usn:
     @Query(value = "SELECT Book.tittle FROM Book " +
             "INNER JOIN Issue ON Book.isbn = Issue.issue_book " +
             "WHERE Issue.issue_student = :usn",
             nativeQuery = true)
     List<String> findBookTitlesByStudentUsn(@Param("usn") String usn);
-
 
 }
