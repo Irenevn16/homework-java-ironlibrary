@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BookRepositoryIrene extends JpaRepository<Book, String> {
+
     @Modifying //oblig al hacer INSERT
     @Transactional //pq es dinamico
     @Query(value=  "INSERT INTO Book (isbn, title, category, quantity) VALUES (:isbn, :title, :category, :quantity)", nativeQuery = true)
@@ -33,6 +34,7 @@ public interface BookRepositoryIrene extends JpaRepository<Book, String> {
     //search book by author
     Book findByAuthor(Author author);
 
+    //Issue book to student
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO Student (usn, name) VALUES (:usn, :name)", nativeQuery = true)
