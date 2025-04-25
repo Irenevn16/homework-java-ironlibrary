@@ -10,6 +10,14 @@ public class Student { //lo de inherot?
 
     private String name;
 
+    @OneToOne(mappedBy = "issueStudent")
+    /* PARA CLASE ISSUE
+    @OneToOne
+    @JoinColumn(name = "student_usn", referencedColumnName = "usn")
+    private Student issueStudent;
+     */
+    private Issue issue;
+
     public Student(){
 
     }
