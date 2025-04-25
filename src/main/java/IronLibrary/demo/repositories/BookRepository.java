@@ -12,7 +12,7 @@ import java.util.List;
 
 @Repository
 public interface BookRepository extends JpaRepository<Book, String> {
-    
+
     //Add book
     @Modifying
     @Transactional
@@ -36,6 +36,16 @@ public interface BookRepository extends JpaRepository<Book, String> {
     @Transactional
     @Query(value = "INSERT INTO Student (usn, name) VALUES (:usn, :name)", nativeQuery = true)
     void insertStudent(@Param("usn") String usn, @Param("name") String name);
+
+    @Modifying
+    @Transactional
+    @Query(value = "INSERT INTO Issue (issue_date, return_date, issue_student_usn, issue_book_isbn) VALUES (:issueDate, :returnDate, :studentUsn, :bookIsbn)", nativeQuery = true)
+    void insertIssue(
+            @Param("issueDate") String issueDate,
+            @Param("returnDate") String returnDate,
+            @Param("studentUsn") String studentUsn,
+            @Param("bookIsbn") String bookIsbn
+    );
 
     // List books by usn:
     @Query(value = "SELECT Book.tittle FROM Book " +

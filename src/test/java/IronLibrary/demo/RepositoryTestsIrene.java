@@ -64,6 +64,8 @@ public class RepositoryTestsIrene {
     @Test
     @DisplayName("comprobando si se añade el libro al estudiante")
     public void testIssueBookToStudent(){
+
+        //tengo que hacer la parte de insert book y luego insert student
         String usn = "123ABC";
         String name = "John Doe";
 

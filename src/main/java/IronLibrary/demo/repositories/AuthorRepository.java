@@ -17,7 +17,8 @@ public interface AuthorRepository extends JpaRepository <Author, Integer> {
     //search book by author
     public Book findByAuthor(Author author);
 
-    //List all books along with author: This action is responsible for listing all the books available and there corresponding authors.
+    //msj de Irene: este método deberia mostrar una lista con autores, pero SIN meter autor de parametro
+    //List all books along with author: This action is responsible for listing all the books available and their corresponding authors.
     List<Book> findAllByAuthor(String author);
 
     @Modifying
