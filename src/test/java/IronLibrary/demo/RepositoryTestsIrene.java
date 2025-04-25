@@ -1,0 +1,86 @@
+package IronLibrary.demo;
+
+import IronLibrary.demo.models.Student;
+import IronLibrary.demo.repositories.BookRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.transaction.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+
+import IronLibrary.demo.models.Author;
+import IronLibrary.demo.models.Book;
+import IronLibrary.demo.repositories.AuthorRepository;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+
+@DataJpaTest
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE) // usa tu DB o H2 si configuras una
+@Transactional
+
+public class RepositoryTestsIrene {
+    private static final Logger log = LoggerFactory.getLogger(RepositoryTestsIrene.class);
+    @Autowired
+    private BookRepository bookRepository;
+
+    @Autowired
+    private AuthorRepository authorRepository;
+
+    @Autowired
+    private EntityManager entityManager;
+
+    @Test
+    @DisplayName("añade un libro")
+    public void addBookCorrectly(){
+        Book book = new Book("895-755-121", "El Quijote", "Drama", 5);
+        List<Book> bookList = new ArrayList<>();
+        bookList.add(book); //addBook o add?
+        System.out.println("New book added: " + book);
+    }
+    @Test
+    @DisplayName("añade un autor")
+    public void addAuthorCorrectly(){
+        Author author = new Author("Isabel Allende", "isabel.allende@example.com");
+        List<Author> authorList = new ArrayList<>();
+        authorList.add(author); //addBook o add?
+        System.out.println("New book added: " + author);
+    }
+
+    @Test
+    @DisplayName("comprobando si encuentra un libro por su autor")
+    public void findByAuthorReturnsCorrectBook(){
+        authorRepository.findByAuthor(new Author("Isabel Allende", "isabel.allende@example.com"));
+       // System.out.println("");//?
+    }
+    @Test
+    @DisplayName("comprobando si se añade el libro al estudiante")
+    public void testIssueBookToStudent(){
+        String usn = "123ABC";
+        String name = "John Doe";
+
+        bookRepository.insertStudent(usn, name);
+
+        entityManager.flush(); //esto es para que JPA lea de la base y no de cache
+        entityManager.clear();
+
+        Student result = entityManager.find(Student.class, usn);
+
+        assertNotNull(result);
+        assertEquals(usn, result.getUsn());
+        assertEquals(name, result.getName());
+    }
+    /*
+    @Query(value = "INSERT INTO Student (usn, name) VALUES (:usn, :name)", nativeQuery = true)
+    void insertStudent(@Param("usn") String usn, @Param("name") String name);
+    */
+
+}
