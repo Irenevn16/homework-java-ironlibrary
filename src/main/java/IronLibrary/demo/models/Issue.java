@@ -25,6 +25,9 @@ public class Issue {
     @Column(name = "issue_book")
     private String issueBook;
 
+    @OneToOne
+    private Student studentIssue;
+
     public Issue() {
     }
 

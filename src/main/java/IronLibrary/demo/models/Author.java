@@ -2,6 +2,8 @@ package IronLibrary.demo.models;
 
 import jakarta.persistence.*;
 
+import java.sql.Blob;
+
 @Entity
 @Table(name = "Author")
 
@@ -14,6 +16,9 @@ public class Author {
     private String name;
 
     private String email;
+
+   @OneToOne
+   private Book bookAuthor;
 
     public Author() {
     }
