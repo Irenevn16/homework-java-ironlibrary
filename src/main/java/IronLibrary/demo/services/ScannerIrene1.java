@@ -1,5 +1,4 @@
 package IronLibrary.demo.services;
-import IronLibrary.demo.IronLibraryApplication;
 import IronLibrary.demo.repositories.AuthorRepository;
 import IronLibrary.demo.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +6,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.time.LocalDate;
 import java.util.Scanner;
 
 @SpringBootApplication
