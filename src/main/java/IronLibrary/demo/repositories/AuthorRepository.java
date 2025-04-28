@@ -30,4 +30,7 @@ public interface AuthorRepository extends JpaRepository <Author, Integer> {
             @Param("email") String email,
             @Param("authorBook") Book authorBook //mirar esto
     );
+
+    Author findByName(String authorName);
+
 }

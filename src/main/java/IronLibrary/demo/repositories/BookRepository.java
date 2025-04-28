@@ -1,5 +1,6 @@
 package IronLibrary.demo.repositories;
 
+import IronLibrary.demo.models.Author;
 import IronLibrary.demo.models.Book;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -53,5 +54,11 @@ public interface BookRepository extends JpaRepository<Book, String> {
             "WHERE Issue.issue_student = :usn",
             nativeQuery = true)
     List<String> findBookTitlesByStudentUsn(@Param("usn") String usn);
+
+    List<Book> findByAuthor(Author author);
+
+    List<Book> findByCategory(String category);
+
+    List<Book> findByTitle(String title);
 
 }
