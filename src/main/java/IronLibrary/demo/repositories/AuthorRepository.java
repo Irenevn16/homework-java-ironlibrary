@@ -18,8 +18,14 @@ public interface AuthorRepository extends JpaRepository <Author, Integer> {
     public Book findByAuthor(Author author);
 
     //msj de Irene: este método deberia mostrar una lista con autores, pero SIN meter autor de parametro
+    //List<Book> findAllByAuthor(String author)
+    // 🔶 MSJ ANGELA: CIERTO! ESTE METODO YA NO VALE, NUEVO METODO CORREGIDO ABAJO ⬇⬇⬇
+
     //List all books along with author: This action is responsible for listing all the books available and their corresponding authors.
-    List<Book> findAllByAuthor(String author);
+    @Query(value = "SELECT book.isbn, book.title, book.category, book.quantity, author.name, author.email " +
+            "FROM author " +
+            "JOIN book ON author.author_book = book.isbn", nativeQuery = true)
+    List<Object[]> findAllBooksWithAuthor();
 
     @Modifying
     @Transactional

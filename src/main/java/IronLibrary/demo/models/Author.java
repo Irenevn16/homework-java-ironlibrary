@@ -17,8 +17,9 @@ public class Author {
 
     private String email;
 
-   @OneToOne
-   private Book bookAuthor;
+    @OneToOne
+    @JoinColumn(name = "author_book")
+   private Book authorBook;
 
     public Author() {
     }
@@ -52,12 +53,21 @@ public class Author {
         this.email = email;
     }
 
+    public Book getAuthorBook() {
+        return authorBook;
+    }
+
+    public void setAuthorBook(Book authorBook) {
+        this.authorBook = authorBook;
+    }
+
     @Override
     public String toString() {
         return "Author{" +
                 "authorId=" + authorId +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
+                ", authorBook=" + authorBook +
                 '}';
     }
 }
