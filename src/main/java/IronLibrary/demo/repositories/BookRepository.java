@@ -52,6 +52,6 @@ public interface BookRepository extends JpaRepository<Book, String> {
             "INNER JOIN Issue ON Book.isbn = Issue.issue_book " +
             "WHERE Issue.issue_student = :usn",
             nativeQuery = true)
-    List<String> findBookTitlesByStudentUsn(@Param("usn") String usn);
+    List<Book> findBookTitlesByStudentUsn(@Param("usn") String usn);
 
 }
