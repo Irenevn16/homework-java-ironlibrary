@@ -60,5 +60,7 @@ public class ScannerIrene implements CommandLineRunner {
         //habra que cerrar el bucle con un running = false en el exit
         scanner.close();
         System.exit(0);
+
+        //PROBANDO SI DESHACE EL BORRADO DEL ARCHIVO
     }
 }
