@@ -2,8 +2,10 @@ package IronLibrary.demo.services;
 
 import IronLibrary.demo.IronLibraryApplication;
 import IronLibrary.demo.models.Book;
+import IronLibrary.demo.models.Issue;
 import IronLibrary.demo.models.Student;
 import IronLibrary.demo.repositories.BookRepository;
+import IronLibrary.demo.repositories.IssueRepository;
 import IronLibrary.demo.repositories.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -20,6 +22,8 @@ public class ScannerAngela implements CommandLineRunner {
     private BookRepository bookRepository;
     @Autowired
     private StudentRepository studentRepository;
+    @Autowired
+    private IssueRepository issueRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(IronLibraryApplication.class, args);
@@ -47,12 +51,13 @@ public class ScannerAngela implements CommandLineRunner {
                     String usn = scanner.nextLine();
                     List<Book> books = bookRepository.findBookTitlesByStudentUsn(usn);
                     Student student = studentRepository.findStudentByUsn(usn);
+                    Issue issue = issueRepository.findByStudentIssue(student);
                     if (books.isEmpty()) {
 
                     } else {
                         for(Book book: books) {
                             System.out.println("Book Title      Student Name        Return date\n" +
-                                   book.getTitle() + "        " +  student.getName() );
+                                   book.getTitle() + "        " +  student.getName() + "        " + issue.getReturnDate());
 
 
                         }

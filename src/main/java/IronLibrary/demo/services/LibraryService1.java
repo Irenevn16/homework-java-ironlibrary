@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
 
-public class LibraryService {
+public class LibraryService1 {
 
     @Autowired
     BookRepository bookRepository;
@@ -15,7 +15,7 @@ public class LibraryService {
     @Autowired
     AuthorRepository authorRepository;
 
-    public LibraryService(BookRepository bookRepository, AuthorRepository authorRepository) {
+    public LibraryService1(BookRepository bookRepository, AuthorRepository authorRepository) {
         this.bookRepository = bookRepository;
         this.authorRepository = authorRepository;
     }
@@ -41,7 +41,8 @@ public class LibraryService {
         //insertar libro
         bookRepository.addBook(isbn, title, category, quantity);
         //insertar autor
-        authorRepository.addAuthor(authorName, authorEmail, authorBook); //como lo enlazo a book?
+//        authorRepository.addAuthor(authorName, authorEmail, authorBook); //como lo enlazo a book?
+        //te he comentado esta linea porque me daba fallo
         //como hacemos que se conecten con la foreign key? existe tabla author book
 
 

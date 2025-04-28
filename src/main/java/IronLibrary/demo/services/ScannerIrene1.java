@@ -9,17 +9,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.Scanner;
 
 @SpringBootApplication
-public class ScannerIrene implements CommandLineRunner {
+public class ScannerIrene1 implements CommandLineRunner {
 
     @Autowired
     BookRepository bookRepository;
     @Autowired
     AuthorRepository authorRepository;
     @Autowired
-    LibraryService libraryService;
+    LibraryService1 libraryService1;
 
     public static void main(String[] args) {
-        SpringApplication.run(ScannerIrene.class, args);
+        SpringApplication.run(ScannerIrene1.class, args);
     }
 
     @Override
@@ -37,7 +37,7 @@ public class ScannerIrene implements CommandLineRunner {
 
             switch (choice) {
                 case 5:
-                    System.out.println("This is the list for all books available and their corresponding authors: " + authorRepository.findAllByAuthor());
+                    System.out.println("This is the list for all books available and their corresponding authors: " + authorRepository.findAllBooksWithAuthor());
                     //hay que corregir el metodo
                     break;
                 case 6:
@@ -51,7 +51,7 @@ public class ScannerIrene implements CommandLineRunner {
                     System.out.println("Enter book ISBN: ");
                     String isbn = scanner.nextLine();
 
-                    libraryService.issueBookToStudent(usn, name, isbn);
+                    libraryService1.issueBookToStudent(usn, name, isbn);
                     break;
             }
         } //metamos default con invalid choice
