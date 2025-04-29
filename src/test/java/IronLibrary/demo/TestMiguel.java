@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import IronLibrary.demo.models.Book;
 import IronLibrary.demo.models.Issue;
 import IronLibrary.demo.repositories.BookRepository;
-import IronLibrary.demo.repositories.BookRepositoryMiguel;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -21,12 +21,12 @@ public class RepositoryTestAngela {
     @Autowired
     private AuthorRepository authorRepository;
 
-    @Test
+   /* @Test
     @DisplayName("Search book by title")
 
     @Test
     @DisplayName("Search book by category")
 
     @Test
-    @DisplayName("List all books along with author")
+    @DisplayName("List all books along with author")*/
 }
