@@ -26,7 +26,8 @@ public class Issue {
     private String issueBook;
 
     @OneToOne
-    private Student studentIssue;
+    @JoinColumn(name= "usn")
+    private Student studentUsn;
 
     public Issue() {
     }
