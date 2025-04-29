@@ -19,12 +19,6 @@ public class Issue {
     @Column(name = "return_date")
     private Date returnDate;
 
-    @Column(name = "issue_student")
-    private String issueStudent;
-
-    @Column(name = "issue_book")
-    private String issueBook;
-
     @OneToOne
     @JoinColumn(name = "issue_student", referencedColumnName = "usn")
     private Student issueStudent;

@@ -55,7 +55,7 @@ public interface BookRepository extends JpaRepository<Book, String> {
             nativeQuery = true)
     List<Book> findBookTitlesByStudentUsn(@Param("usn") String usn);
 
-    List<Book> findByAuthor(Author author);
+    List<Book> findByAuthor(String authorName);
 
     List<Book> findByCategory(String category);
 

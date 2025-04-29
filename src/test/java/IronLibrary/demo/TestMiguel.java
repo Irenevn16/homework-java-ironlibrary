@@ -14,7 +14,7 @@ import java.util.List;
 @SpringBootTest
 public class TestMiguel {
     @Autowired
-    private BookRepositoryMiguel bookRepositoryMiguel;
+    private BookRepository bookRepository;
     //private IssueRepository issueRepository;
 
 
@@ -22,11 +22,11 @@ public class TestMiguel {
     @DisplayName("Buscar Libro por USN")
     public void testFindBookTitlesByStudentUsn() {
         String usn = "978-0140449136";
-        List<String> titles = bookRepositoryMiguel.findBookTitlesByStudentUsn(usn);
+        List<Book> titles = bookRepository.findBookTitlesByStudentUsn(usn);
         assertNotNull(titles);
         assertFalse(titles.isEmpty(), "No se encontraron libros emitidos para el USN dado");
 
-        for (String title : titles) {
+        for (Book title : titles) {
             System.out.println(title);
         }
     }
