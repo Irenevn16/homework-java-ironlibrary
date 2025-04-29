@@ -1,5 +1,6 @@
 package IronLibrary.demo.services;
 
+import IronLibrary.demo.models.Book;
 import IronLibrary.demo.repositories.AuthorRepository;
 import IronLibrary.demo.repositories.BookRepository;
 import jakarta.transaction.Transactional;
@@ -14,6 +15,8 @@ public class LibraryService1 {
 
     @Autowired
     AuthorRepository authorRepository;
+    @Autowired
+    Book book;
 
     public LibraryService1(BookRepository bookRepository, AuthorRepository authorRepository) {
         this.bookRepository = bookRepository;
@@ -37,13 +40,11 @@ public class LibraryService1 {
 
 
     @Transactional
-    public void addBookAndAuthor(String isbn, String title, String category, int quantity, String authorName, String authorEmail) {
+    public void addBookAndAuthor(String isbn, String title, String category, int quantity, String authorName, String authorEmail, Book authorBook) {
         //insertar libro
         bookRepository.addBook(isbn, title, category, quantity);
         //insertar autor
-//        authorRepository.addAuthor(authorName, authorEmail, authorBook); //como lo enlazo a book?
-        //te he comentado esta linea porque me daba fallo
-        //como hacemos que se conecten con la foreign key? existe tabla author book
+        authorRepository.addAuthor(authorName, authorEmail, authorBook);
 
 
         System.out.println("Book and author had been added correctly");

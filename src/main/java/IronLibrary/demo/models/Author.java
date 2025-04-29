@@ -24,9 +24,10 @@ public class Author {
     public Author() {
     }
 
-    public Author(String name, String email) {
+    public Author(String name, String email, Book authorBook) {
         this.name = name;
         this.email = email;
+        this.authorBook = authorBook;
     }
 
     public int getAuthorId() {
