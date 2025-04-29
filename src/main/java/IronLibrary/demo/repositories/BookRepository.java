@@ -2,6 +2,7 @@ package IronLibrary.demo.repositories;
 
 import IronLibrary.demo.models.Author;
 import IronLibrary.demo.models.Book;
+import IronLibrary.demo.models.Student;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -40,26 +41,27 @@ public interface BookRepository extends JpaRepository<Book, String> {
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO Issue (issue_date, return_date, issue_student_usn, issue_book_isbn) VALUES (:issueDate, :returnDate, :studentUsn, :bookIsbn)", nativeQuery = true)
+    @Query(value = "INSERT INTO Issue (issue_date, return_date, issue_student, issue_book) VALUES (:issueDate, :returnDate, :issueStudent, :issueBook)", nativeQuery = true)
     void insertIssue(
             @Param("issueDate") String issueDate,
             @Param("returnDate") String returnDate,
-            @Param("studentUsn") String studentUsn,
-            @Param("bookIsbn") String bookIsbn
+            @Param("issueStudent") Student issueStudent,
+            @Param("issueBook") Book issueBook
     );
 
     // List books by usn:
-    @Query(value = "SELECT Book.tittle FROM Book " +
+    @Query(value = "SELECT Book.title FROM Book " +
             "INNER JOIN Issue ON Book.isbn = Issue.issue_book " +
             "WHERE Issue.issue_student = :usn",
             nativeQuery = true)
     List<Book> findBookTitlesByStudentUsn(@Param("usn") String usn);
 
-    List<Book> findByAuthor(String authorName);
+
 
     List<Book> findByCategory(String category);
 
     List<Book> findByTitle(String title);
 
+    Book findByIsbn(String isbn);
 
 }

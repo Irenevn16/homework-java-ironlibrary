@@ -8,7 +8,6 @@ import jakarta.persistence.Table;
 @Table(name = "Book")
 public class Book {
     @Id
-
     private String isbn;
 
     private String title;

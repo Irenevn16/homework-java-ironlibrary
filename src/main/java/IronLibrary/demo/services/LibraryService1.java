@@ -1,13 +1,15 @@
 package IronLibrary.demo.services;
 
 import IronLibrary.demo.models.Book;
+import IronLibrary.demo.models.Student;
 import IronLibrary.demo.repositories.AuthorRepository;
 import IronLibrary.demo.repositories.BookRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-
+@Service
 public class LibraryService1 {
 
     @Autowired
@@ -15,16 +17,15 @@ public class LibraryService1 {
 
     @Autowired
     AuthorRepository authorRepository;
-    @Autowired
-    Book book;
 
-    public LibraryService1(BookRepository bookRepository, AuthorRepository authorRepository) {
+
+ /*   public LibraryService1(BookRepository bookRepository, AuthorRepository authorRepository) {
         this.bookRepository = bookRepository;
         this.authorRepository = authorRepository;
-    }
+    }*/
 
-    public void issueBookToStudent (String usn, String name, String isbn) {
-        bookRepository.insertStudent(usn, name);
+    public void issueBookToStudent (Student usn, String name, Book isbn) {
+        //bookRepository.insertStudent(usn, name);
 
         LocalDate issueDate = LocalDate.now();
         LocalDate returnDate = issueDate.plusDays(30);
@@ -35,6 +36,7 @@ public class LibraryService1 {
                 usn,
                 isbn
         );
+        System.out.println("Book issued. Return date " + returnDate);
 
     }
 

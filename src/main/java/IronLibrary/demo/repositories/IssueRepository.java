@@ -5,5 +5,5 @@ import IronLibrary.demo.models.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface IssueRepository extends JpaRepository<Issue, Integer> {
-  Issue findByStudentIssue (Student studentIssue);
+  Issue findByIssueStudent (Student issueStudent);
 }

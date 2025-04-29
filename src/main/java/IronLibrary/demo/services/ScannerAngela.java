@@ -14,7 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.List;
 import java.util.Scanner;
-
+/*
 @SpringBootApplication
 
 public class ScannerAngela implements CommandLineRunner {
@@ -98,4 +98,4 @@ public class ScannerAngela implements CommandLineRunner {
             scanner.close();
             System.exit(0);
     }
-}
+}*/

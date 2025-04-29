@@ -9,7 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.List;
-
+/*
 @SpringBootApplication
 public class ServiceMiguel implements CommandLineRunner {
 
@@ -92,4 +92,4 @@ public class ServiceMiguel implements CommandLineRunner {
         System.out.println("Library closed");
     }
 
-}
+}*/

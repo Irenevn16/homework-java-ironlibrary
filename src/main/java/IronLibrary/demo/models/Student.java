@@ -3,7 +3,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table (name= "student")
-public class Student { //lo de inherot?
+public class Student {
 
     @Id
     private String usn; //Universal Student Number-unique identifier

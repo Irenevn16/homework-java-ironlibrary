@@ -7,7 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Scanner;
-
+/*
 @SpringBootApplication
 public class ScannerIrene1 implements CommandLineRunner {
 
@@ -59,4 +59,4 @@ public class ScannerIrene1 implements CommandLineRunner {
         scanner.close();
         System.exit(0);
     }
-}
+}*/
