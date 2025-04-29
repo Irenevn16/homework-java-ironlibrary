@@ -67,4 +67,5 @@ public class Book {
                 ", quantity=" + quantity +
                 '}';
     }
+
 }
