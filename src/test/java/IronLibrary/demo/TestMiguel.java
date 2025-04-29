@@ -25,8 +25,8 @@ public class TestMiguel {
         bookRepository.save(book1);
 
         Issue issue = new Issue();
-        issue.setIssueBook("252");
-        issue.setIssueStudent("USN123");
+        //issue.setIssueBook("252");
+        //issue.setIssueStudent("USN123");
         //issueRepository.save
 
     }

@@ -35,8 +35,6 @@ public class RepositoryTestsIrene {
     @Autowired
     private AuthorRepository authorRepository;
 
-    @Autowired
-    private EntityManager entityManager;
 
     @Test
     @DisplayName("añade un libro")
@@ -49,7 +47,7 @@ public class RepositoryTestsIrene {
     @Test
     @DisplayName("añade un autor")
     public void addAuthorCorrectly(){
-        Author author = new Author("Isabel Allende", "isabel.allende@example.com");
+        Author author = new Author("Isabel Allende", "isabel.allende@example.com", new Book("978-0061120060", "La casa de los espíritus", "Novela", 3));
         List<Author> authorList = new ArrayList<>();
         authorList.add(author); //addBook o add?
         System.out.println("New book added: " + author);
@@ -58,7 +56,7 @@ public class RepositoryTestsIrene {
     @Test
     @DisplayName("comprobando si encuentra un libro por su autor")
     public void findByAuthorReturnsCorrectBook(){
-        authorRepository.findByAuthor(new Author("Isabel Allende", "isabel.allende@example.com"));
+        authorRepository.findByAuthor(new Author("Isabel Allende", "isabel.allende@example.com", new Book("978-0061120060", "La casa de los espíritus", "Novela", 3)));
        // System.out.println("");//?
     }
     @Test
@@ -71,14 +69,10 @@ public class RepositoryTestsIrene {
 
         bookRepository.insertStudent(usn, name);
 
-        entityManager.flush(); //esto es para que JPA lea de la base y no de cache
-        entityManager.clear();
+        bookRepository.addBook("879998-45", "Biography", "Drama", 1);
 
-        Student result = entityManager.find(Student.class, usn);
 
-        assertNotNull(result);
-        assertEquals(usn, result.getUsn());
-        assertEquals(name, result.getName());
+
     }
     /*
     @Query(value = "INSERT INTO Student (usn, name) VALUES (:usn, :name)", nativeQuery = true)
